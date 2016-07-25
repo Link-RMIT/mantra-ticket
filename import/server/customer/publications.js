@@ -3,9 +3,9 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 
-export default function () {
+//export default function () {
     Meteor.publish('cases.list', function () {
-        const selector = {customerId: this.customerId};
+        const selector = {customerId: this.userId};
         const options = {
             fields: {
                 _id: 1,
@@ -16,7 +16,6 @@ export default function () {
             sort: {createdAt: -1},
             //limit: 10
         };
-
         return Cases.find(selector, options);
     });
 /*
@@ -32,4 +31,4 @@ export default function () {
         return Comments.find(selector);
     });
  */
-}
+//}
