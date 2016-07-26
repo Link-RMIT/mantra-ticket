@@ -6,6 +6,7 @@ import { Cases,State } from '../../collectons/cases.js';
 import { Factory } from 'meteor/dburles:factory';
 import { _ } from 'meteor/underscore';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
+import { MethodNames, Publications } from '../../definitions';
 
 if (Meteor.isServer) {
     require('./publications.js');
@@ -17,7 +18,7 @@ if (Meteor.isServer) {
             });
 
             it('can open a case', (done) => {
-                const new_case = Meteor.server.method_handlers['case.add'];
+                const new_case = Meteor.server.method_handlers[MethodNames.case.add];
                 const content = "test content";
                 new_case.apply({
                     userId: customerId
@@ -47,8 +48,7 @@ if (Meteor.isServer) {
 
             it('can only view own cases', (done)=>{
                 const collector = new PublicationCollector({ userId: currentCustomer});
-
-                collector.collect('cases.list',(collections) => {
+                collector.collect(Publications.cases.list,(collections) => {
                     assert.equal(collections.Cases.length, 3);
                  });
 

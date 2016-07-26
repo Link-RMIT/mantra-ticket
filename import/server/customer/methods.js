@@ -1,8 +1,10 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Cases, State } from '../../collectons/cases.js';
+import { MethodNames } from '../../definitions/method_names.js';
+
 
 export const new_case = new ValidatedMethod({
-    name: 'case.add',
+    name: MethodNames.case.add,
     validate: new SimpleSchema({
         content: Cases.simpleSchema().schema('content'),
     }).validator(),
