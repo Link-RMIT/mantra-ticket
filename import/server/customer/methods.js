@@ -13,8 +13,6 @@ export const new_case = new ValidatedMethod({
         Cases.insert({
             content: content,
             customerId: this.userId,
-            createdAt: new Date(),
-            state: State.PENDING,
         });
         }
     }
