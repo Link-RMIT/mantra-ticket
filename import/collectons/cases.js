@@ -1,6 +1,8 @@
 import {Mongo} from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+import { Configs } from '../definitions';
+
 export const Cases = new Mongo.Collection('Cases');
 
 
@@ -16,6 +18,9 @@ Cases.schema = new SimpleSchema({
     createdAt: { type: Date,  denyUpdate: true },
     content: { type: String },
     state: { type: Number },
+    supportTeamName: { type: String, defaultValue: Configs.DEFAULT_SUPPORT_TEAM},
+    supportPersonId: { type: String, regEx: SimpleSchema.RegEx.Id, optional:true },
+
 });
 
 export const State = {

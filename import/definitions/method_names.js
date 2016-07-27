@@ -20,10 +20,17 @@ const parse = (stack,def)=>{
 };
 
 let definitions = {
-    case: toObj(['add','resolve']),
-    queue: toObj(['assign']),
+    case: {
+        add:undefined,
+        resolve:undefined,
+        assign:{
+            to:{
+                team:undefined,
+                self:undefined,
+            }
+        },
+        release:undefined,
+    },
 };
-
-
 
 export const MethodNames = parse([],definitions);

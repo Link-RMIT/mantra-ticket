@@ -20,7 +20,12 @@ const parse = (stack,def)=>{
 };
 
 let definitions = {
-    cases: toObj(['list']),
+    cases: {
+        list:{
+            support:undefined,
+            customer:undefined,
+        },
+    },
 };
 
 

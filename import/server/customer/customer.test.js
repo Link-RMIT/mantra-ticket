@@ -1,11 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import { assert } from 'meteor/practicalmeteor:chai';
-import { Tasks } from './methods.js';
-import { Cases,State } from '../../collectons/cases.js';
 import { Factory } from 'meteor/dburles:factory';
 import { _ } from 'meteor/underscore';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
+
+import { new_case } from './methods.js';
+import { Cases,State } from '../../collectons/cases.js';
 import { MethodNames, Publications } from '../../definitions';
 
 if (Meteor.isServer) {
@@ -48,11 +49,10 @@ if (Meteor.isServer) {
 
             it('can only view own cases', (done)=>{
                 const collector = new PublicationCollector({ userId: currentCustomer});
-                collector.collect(Publications.cases.list,(collections) => {
+                collector.collect(Publications.cases.list.customer,(collections) => {
                     assert.equal(collections.Cases.length, 3);
+                    done();
                  });
-
-                done();
             });
         });
     });

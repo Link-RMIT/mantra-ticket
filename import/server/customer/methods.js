@@ -1,6 +1,6 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Cases, State } from '../../collectons/cases.js';
-import { MethodNames } from '../../definitions/method_names.js';
+import { MethodNames, Configs } from '../../definitions';
 
 
 export const new_case = new ValidatedMethod({
