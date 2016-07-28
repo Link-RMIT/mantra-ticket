@@ -7,6 +7,8 @@
   "dependencies": {
     "mantra": "^0.1.1",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.2.1"
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-mounter": "^1.2.0"
   }
 }
