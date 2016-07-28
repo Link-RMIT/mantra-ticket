@@ -6,7 +6,7 @@ import { _ } from 'meteor/underscore';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 
 import { new_case } from './methods.js';
-import { Cases,State } from '../../collectons/cases.js';
+import { Cases,State } from '../../collections/cases.js';
 import { MethodNames, Publications } from '../../definitions';
 
 if (Meteor.isServer) {

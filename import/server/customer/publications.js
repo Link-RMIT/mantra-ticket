@@ -1,4 +1,4 @@
-import {Cases} from '../../collectons/cases.js';
+import {Cases} from '../../collections/cases.js';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import { Publications } from '../../definitions';

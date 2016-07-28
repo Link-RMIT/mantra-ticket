@@ -1,5 +1,5 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
-import { Cases, State } from '../../collectons/cases.js';
+import { Cases, State } from '../../collections/cases.js';
 import { MethodNames, Configs } from '../../definitions';
 
 
