@@ -26,6 +26,9 @@ let definitions = {
             customer:undefined,
         },
     },
+    notes: {
+        list:undefined
+    },
 };
 
 

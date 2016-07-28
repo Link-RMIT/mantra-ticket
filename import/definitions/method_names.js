@@ -31,6 +31,9 @@ let definitions = {
         },
         release:undefined,
     },
+    note:{
+        add:undefined,
+    },
 };
 
 export const MethodNames = parse([],definitions);
