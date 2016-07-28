@@ -1,9 +1,11 @@
-export default{
-    login: ({Meteor, LocalState}, username, password, signup = undefined) => {
-        if(signup==='checked'){
-            //signup
-            return;
+export default {
+    main:{
+        login: ({Meteor, LocalState}, username, password, signup = undefined) => {
+            if(signup==='checked'){
+                //signup
+                return;
+            }
+            Meteor.loginWithPassword(username, password);
         }
-        Meteor.loginWithPassword(username, password);
     }
 }

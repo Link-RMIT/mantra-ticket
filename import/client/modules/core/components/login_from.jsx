@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
                 <p>Password:</p>
                 <input ref="passwordRef" type="password" name="password" id="password" /><br />
                 <p>Sign up</p>
-                <input ref="signupRef" type="checkbox" name="signup" checked="checked" /><br />
+                <input ref="signupRef" type="checkbox" name="signup"/><br />
                 <input type="submit" value="Submit" />
             </form>
         );
@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
         if (event && event.preventDefault) {
             event.preventDefault();
         }
-
+        console.log(this.props.login);
         const {login} = this.props;
         const {usernameRef, passwordRef,signupRef} = this.refs;
         login(usernameRef.value, passwordRef.value, signupRef.value);

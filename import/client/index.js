@@ -5,7 +5,6 @@ import initContext from './configs/context';
 import coreModule from './modules/core';
 //import commentsModule from './modules/comments';
 
-
 export function init () {
     // init context
     const context = initContext();
