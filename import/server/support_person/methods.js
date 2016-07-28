@@ -1,7 +1,8 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { Roles } from 'meteor/alanning:roles';
 
-import { Cases,State } from '../../collectons/cases.js';
+import { Cases,State } from '../../collections/cases.js';
+import { CaseNotes } from '../../collections/case_notes.js';
 import { MethodNames } from '../../definitions';
 
 
@@ -76,6 +77,23 @@ export const release = new ValidatedMethod({
                 state: State.PENDING,
                 supportPersonId:undefined,
             }
+        });
+    }
+});
+
+
+export const add_note = new ValidatedMethod({
+    name: MethodNames.note.add,
+    validate: new SimpleSchema({
+        caseId: CaseNotes.simpleSchema().schema('caseId'),
+        content: CaseNotes.simpleSchema().schema('content'),
+    }).validator(),
+    run( { caseId, content } ){
+        is_available.call(this, caseId);
+        CaseNotes.insert({
+            caseId,
+            content,
+            supportPersonId:this.userId,
         });
     }
 });
