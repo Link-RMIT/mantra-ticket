@@ -3,7 +3,7 @@ import initContext from './configs/context';
 
 // modules
 import coreModule from './modules/core';
-//import commentsModule from './modules/comments';
+import customerModule from './modules/customer';
 
 export function init () {
     // init context
@@ -12,6 +12,6 @@ export function init () {
     // create app
     const app = createApp(context);
     app.loadModule(coreModule);
-    //app.loadModule(commentsModule);
+    app.loadModule(customerModule);
     app.init();
 }

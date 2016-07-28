@@ -17,9 +17,9 @@ class LoginForm extends React.Component {
         if (event && event.preventDefault) {
             event.preventDefault();
         }
-        console.log(this.props.login);
         const {login} = this.props;
         const {usernameRef, passwordRef,signupRef} = this.refs;
+        console.log(this.refs);
         login(usernameRef.value, passwordRef.value, signupRef.value);
     }
 }
