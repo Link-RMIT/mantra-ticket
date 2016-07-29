@@ -53,9 +53,28 @@ Meteor.publish(Publications.cases.list.support, function () {
     return Cases.find(selector, options);
 });
 
+
+Meteor.publish("rooms", function () {
+    var self = this;
+    var handle = Rooms.find({}).observeChanges({
+        added:   function(id, fields) { self.added("rooms", id, fields); },
+        changed: function(id, fields) { self.changed("rooms", id, fields); },
+        removed: function(id)         { self.added("rooms", id); },
+    });
+    self.ready();
+    self.onStop(function () { handle.stop(); });
+});
+
 Meteor.publish(Publications.notes.list, function () {
-    const selector = {
-    };
-    const options = {};
-    return CaseNotes.find(selector, options);
+    var self = this;
+    var handle = CaseNotes.find({}).observeChanges({
+        added:   function(id, fields) {
+            const author = Meteor.users.findOne({_id:fields.supportPersonId});
+            fields.support_person_name = author.username;
+            console.log(id,fields);
+            self.added("CaseNotes", id, fields);
+        },
+    });
+    self.ready();
+    self.onStop(function () { handle.stop(); });
 });

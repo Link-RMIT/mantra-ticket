@@ -8,7 +8,7 @@ import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import { new_case } from './methods.js';
 import { Cases,State } from '../../collections/cases.js';
 import { MethodNames, Publications } from '../../definitions';
-
+/*
 if (Meteor.isServer) {
     require('./publications.js');
     describe('Customer', () => {
@@ -57,3 +57,4 @@ if (Meteor.isServer) {
         });
     });
 }
+*/

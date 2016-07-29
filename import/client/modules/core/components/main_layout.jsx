@@ -9,13 +9,13 @@ class Layout extends React.Component {
                 <header>
                     <h1>Ticket</h1>
                     <button onClick={this.Logout.bind(this)}>Logout</button>
-                        <div><b>navigation</b>
-                            {
+                        <div><b>Nav</b> - {
                                 nav.map((i,key)=>{
                                     return (<a href="{i.url}" key='{key}'>{i.name}</a>);
                                 })
                             }
                         </div>
+
                 </header>
 
                 <div>

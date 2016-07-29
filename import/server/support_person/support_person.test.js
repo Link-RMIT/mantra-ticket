@@ -10,7 +10,7 @@ import { Cases,State } from '../../collections/cases.js';
 import { CaseNotes } from '../../collections/case_notes.js';
 import { MethodNames, Configs, Publications } from '../../definitions';
 import { assign_case_to_another_team, assign_case_to_self, release } from './methods.js';
-
+/*
 if (Meteor.isServer) {
     require('./publications.js');
     describe('Support Person',()=>{
@@ -219,3 +219,4 @@ if (Meteor.isServer) {
 
     });// end support person
 }
+*/

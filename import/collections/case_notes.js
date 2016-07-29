@@ -1,7 +1,7 @@
 import {Mongo} from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const CaseNotes = new Mongo.Collection('CaseNote');
+export const CaseNotes = new Meteor.Collection('CaseNotes');
 
 CaseNotes.deny({
     insert(){ return true; },

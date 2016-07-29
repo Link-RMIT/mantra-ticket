@@ -6,7 +6,8 @@ import LoginForm from '../components/login_from';
 
 
 export const composer = ({context}, onData) => {
-    onData(null, {});
+    const {LocalState} = context();
+    onData(null, {error_message:LocalState.get('LOGIN_ERROR')});
 };
 
 export const depsMapper = (context, actions) => {
@@ -17,7 +18,6 @@ export const depsMapper = (context, actions) => {
         context: () => context
     });
 };
-
 
 export default composeAll(
     composeWithTracker(composer),

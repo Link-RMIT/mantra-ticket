@@ -31,7 +31,7 @@ export default {
                 {caseId}
             );
         },
-        resolve: ({Meteor, LocalState, GlobalDefinitions:{MethodNames}}, teamName ) => {
+        resolve: ({Meteor, LocalState, GlobalDefinitions:{MethodNames}}, caseId ) => {
             Meteor.call(
                 MethodNames.case.resolve,
                 {caseId}

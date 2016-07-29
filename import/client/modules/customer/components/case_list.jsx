@@ -11,7 +11,7 @@ class CaseList extends React.Component {
                 <button onClick={this.Submit.bind(this)}>Add Comment</button>
                 <ul>
                     {case_list.map((the_case,i) =>
-                         (<li key={i}>{the_case.content}</li>)
+                         (<li key={i}>[{the_case.stateDescription}] - { the_case.content }</li>)
                      )}
                 </ul>
             </div>

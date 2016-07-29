@@ -29,14 +29,8 @@ export const composer = ({context, caseId}, onData) => {
         if(Meteor.subscribe(GlobalDefinitions.Publications.notes.list).ready()){
             const note_options = {
                 sort: {createdAt: -1},
-                transform: function(note){
-                    console.log(Meteor.users.find({}).fetch());
-                    const support_person = Meteor.users.findOne({_id: note.supportPersonId});
-                    note.support_person_name = support_person.username;
-                    return note;
-                }
             };
-            data.notes = Collections.CaseNotes.find({caseId: caseId},note_options);
+            data.notes = Collections.CaseNotes.find({caseId: caseId},note_options).fetch();
             onData(null, data);
         }
         else{

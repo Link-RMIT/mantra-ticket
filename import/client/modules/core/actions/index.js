@@ -33,8 +33,10 @@ export default {
             Meteor.logout((e)=> {
                 // callback
                 if(e){
+                    LocalState.set('LOGIN_ERROR',e);
                     console.log(e);
                 }
+                LocalState.set('LOGIN_ERROR','');
             });
             console.log('logout');
             FlowRouter.redirect('/');

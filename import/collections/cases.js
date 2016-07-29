@@ -3,8 +3,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import { Configs } from '../definitions';
 
-export const Cases = new Mongo.Collection('Cases');
-
+export const Cases = new Meteor.Collection('Cases');
 
 Cases.deny({
     insert(){ return true; },
@@ -18,6 +17,7 @@ export const State = {
     RESOLVED: 3,
 };
 
+Cases.State  = State;
 
 Cases.schema = new SimpleSchema({
     _id: { type: String, regEx: SimpleSchema.RegEx.Id},

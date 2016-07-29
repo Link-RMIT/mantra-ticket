@@ -104,3 +104,16 @@ export const add_note = new ValidatedMethod({
         });
     }
 });
+
+export const resolve = new ValidatedMethod({
+    name: MethodNames.case.resolve,
+    validate: new SimpleSchema({
+        caseId: CaseNotes.simpleSchema().schema('caseId'),
+    }).validator(),
+    run( { caseId } ){
+        is_available.call(this, caseId);
+        Cases.update(caseId,{$set:{
+            state: State.RESOLVED
+        }});
+    }
+});

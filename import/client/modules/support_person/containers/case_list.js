@@ -11,7 +11,14 @@ export const composer = ({context}, onData) => {
         };
         console.log(Collections);
         const case_list = Collections.Cases.find({},options).fetch();
-        onData(null, {case_list});
+        const queue = case_list.filter(
+            (c)=> c.state == Collections.Cases.State.PENDING
+        );
+        const my_cases = case_list.filter(
+            (c)=> c.supportPersonId == Meteor.userId()
+                && c.state != Collections.Cases.State.RESOLVED
+        );
+        onData(null, {queue,my_cases});
     } else {
         onData();
     }
