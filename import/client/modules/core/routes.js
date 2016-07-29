@@ -6,6 +6,7 @@ import MainLayout from './containers/main_layout';
 import LoginForm from './containers/login_form';
 import CaseList from '../customer/containers/case_list.js';
 import SupportCaseList from '../support_person/containers/case_list.js';
+import CaseDetail from '../support_person/containers/case_detail.js';
 
 //import PostList from './containers/postlist';
 //nimport Post from './containers/post';
@@ -54,7 +55,6 @@ export default function (injectDeps, {FlowRouter, Meteor, Tracker, LocalState}) 
                 content = ()=> (<SupportCaseList />);
             }
             else {
-                //content = ()=> ('asdfasfadsf');
                 content = ()=> (<CaseList />);
             }
             mount(MainLayoutCtx, {
