@@ -1,26 +1,23 @@
 import React from 'react';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 import PostList from '../components/main_layout';
-import LoginForm from '../containers/login_form';
-import CaseList from '../../customer/containers/case_list.js';
 
 
-export const composer = ({context}, onData) => {
+export const composer = ({context,content,nav}, onData) => {
     const {Meteor, Collections, States} = context();
-    const nav = [{url:'/',name:'Home'}];
-    const user = Meteor.user();
-    if(!user){
-        onData(null, {content: ()=> (<LoginForm />), nav});
-    }
-    else if(user.roles){
-        onData(null, {content: ()=> ('support person'), nav});
-    }
-    else {
-        onData(null, {content: ()=> (<CaseList />),nav});
-    }
+    onData(null, {content, nav});
+};
+
+
+export const depsMapper = (context, actions) => {
+    console.log(actions);
+    return ({
+        logout: actions.main.logout,
+        context: () => context
+    });
 };
 
 export default composeAll(
     composeWithTracker(composer),
-    useDeps()
+    useDeps(depsMapper)
 )(PostList);

@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
         const {login} = this.props;
         const {usernameRef, passwordRef,signupRef} = this.refs;
         console.log(this.refs);
-        login(usernameRef.value, passwordRef.value, signupRef.value);
+        login(usernameRef.value, passwordRef.value, signupRef.checked);
     }
 }
 

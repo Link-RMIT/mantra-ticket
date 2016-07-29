@@ -8,16 +8,18 @@ import { MethodNames } from '../../definitions';
 
 function is_available (caseId)  {
     var the_case = Cases.findOne({_id:caseId});
+    const user = Meteor.user();
     if (!the_case){
         throw new Meteor.Error(MethodNames.case.assign.to.team,"case not found");
     }
-    if (!this.user.roles){
+    if (!user.roles){
         throw new Meteor.Error(MethodNames.case.assign.to.team,"login required");
     }
-    if(!(the_case.supportTeamName in this.user.roles)){
+    if(!(the_case.supportTeamName in user.roles)){
         throw new Meteor.Error(MethodNames.case.assign.to.team,"the case is currently own by " + the_case.supportTeamName);
     }
-    if(the_case.supportPersonId && (the_case.supportPersonId != this.userId)){
+    if(the_case.supportPersonId && (the_case.supportPersonId != user._id)){
+        console.log(the_case.supportPersonId, user._id);
         throw new Meteor.Error(MethodNames.case.assign.to.team,"the case is already assigned to another support person");
     }
     return true;
@@ -37,13 +39,13 @@ export const assign_case_to_another_team = new ValidatedMethod({
             throw new Meteor.Error(MethodNames.case.assign.to.team,'team \''+teamName+'\' not exists');
         }
 
-        is_available.call(this, caseId);
+        is_available.call({user:Meteor.user()}, caseId);
 
-        Cases.update(caseId,{
+        Cases.update({_id:caseId},{
             $set:{
                 state: State.PENDING,
                 supportTeamName: teamName,
-                supportPersonId:undefined
+                supportPersonId:null
             }
         });
     }
@@ -72,11 +74,16 @@ export const release = new ValidatedMethod({
     }).validator(),
     run( { caseId } ){
         is_available.call(this,caseId);
-        Cases.update(caseId,{
+
+        Cases.update({_id:caseId},{
             $set:{
                 state: State.PENDING,
-                supportPersonId:undefined,
+                supportPersonId:null,
             }
+        },(e)=>{
+            console.log('====================');
+            console.log(e);
+            console.log(Cases.findOne({_id:caseId}));
         });
     }
 });

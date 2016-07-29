@@ -11,7 +11,7 @@ export default {
                         LocalState
                             .set('LOGIN_ERROR', e.reason);
                     }else{
-                        FlowRouter.go('/');
+                        FlowRouter.redirect('/');
                     }
                 });
                 return;
@@ -36,6 +36,8 @@ export default {
                     console.log(e);
                 }
             });
+            console.log('logout');
+            FlowRouter.redirect('/');
         }
     }
 }

@@ -1,3 +1,4 @@
 export const Configs = {
-    DEFAULT_SUPPORT_TEAM:'Level 1 Support',
+    DEFAULT_SUPPORT_TEAM:'Level_1_Support',
+    TEAM_LIST:['Level_1_Support','Developer'],
 }
