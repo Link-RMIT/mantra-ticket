@@ -24,6 +24,7 @@ Meteor.publish(Publications.cases.list.support, function () {
             supportPersonId:1,
         },
         sort: {createdAt: -1},
+    };
     return Cases.find(selector, options);
 });
 
