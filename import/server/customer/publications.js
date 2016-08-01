@@ -14,6 +14,7 @@ Meteor.publish(Publications.cases.list.customer, function () {
 
     function transform (id, fields) {
         if (fields.state == State.RESOLVED){
+            const support_person_name = Meteor.users.findOne({_id:fields.supportPersonId});
             fields.stateDescription = "Resolved by: " + support_person_name.username;
         }
         else if (fields.supportPersonId){

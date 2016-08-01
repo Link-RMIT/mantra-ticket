@@ -8,7 +8,7 @@ class CaseList extends React.Component {
 
                 </textarea>
                 <br />
-                <button onClick={this.Submit.bind(this)}>Add Comment</button>
+                <button onClick={this.Submit.bind(this)}>Add Case</button>
                 <ul>
                     {case_list.map((the_case,i) =>
                          (<li key={i}>[{the_case.stateDescription}] - { the_case.content }</li>)
