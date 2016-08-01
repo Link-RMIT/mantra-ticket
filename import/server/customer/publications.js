@@ -3,7 +3,7 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 import { Publications } from '../../definitions';
 
-
+if (Meteor.isServer) {
 Meteor.publish(Publications.cases.list.customer, function () {
 
     const selector = {customerId: this.userId};
@@ -14,8 +14,13 @@ Meteor.publish(Publications.cases.list.customer, function () {
 
     function transform (id, fields) {
         if (fields.state == State.RESOLVED){
-            const support_person_name = Meteor.users.findOne({_id:fields.supportPersonId});
-            fields.stateDescription = "Resolved by: " + support_person_name.username;
+            if(fields.supportPersonId){
+                const support_person = Meteor.users.findOne({_id:fields.supportPersonId});
+                fields.stateDescription = "Resolved by: " + support_person.username;
+            }
+            else{
+                fields.stateDescription = "Resolved";
+            }
         }
         else if (fields.supportPersonId){
             const support_person_name = Meteor.users.findOne({_id:fields.supportPersonId});
@@ -41,3 +46,4 @@ Meteor.publish(Publications.cases.list.customer, function () {
     self.ready();
     self.onStop(function () { handle.stop(); });
 });
+}

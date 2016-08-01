@@ -20,7 +20,7 @@ export const composer = ({context, caseId}, onData) => {
         let data = {
             the_case,
             teams: GlobalDefinitions.Configs.TEAM_LIST
-                .filter((theam_name)=> !(team_name in user.roles)),
+                .filter((team_name)=> !(team_name in user.roles)),
             notes:[],
         };
 
