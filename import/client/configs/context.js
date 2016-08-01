@@ -5,11 +5,8 @@ import {ReactiveDict} from 'meteor/reactive-dict';
 import {Tracker} from 'meteor/tracker';
 import GlobalDefinitions from '../../definitions';
 
-console.log(Collections);
 
 export default function () {
-    console.log('init context');
-    console.log(Meteor);
     return {
         Meteor,
         FlowRouter,

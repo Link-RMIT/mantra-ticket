@@ -35,7 +35,6 @@ class CaseList extends React.Component {
         );
     }
     AssignToMe(the_case) {
-        //this.props.
         this.props.assign_to_self(the_case._id);
     }
     Release(the_case){

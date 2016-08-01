@@ -1,5 +1,3 @@
-//case.asign.to.team
-//note.add
 export default {
     support_person:{
         new_note: ({
@@ -7,14 +5,12 @@ export default {
             LocalState,
             GlobalDefinitions:{MethodNames}
         }, caseId, content ) => {
-            console.log('new_note');
             Meteor.call(
                 MethodNames.note.add,
                 { caseId, content }
             );
         },
         assign_to_self: ({Meteor, LocalState, GlobalDefinitions:{MethodNames}}, caseId ) => {
-            console.log('new_note');
             Meteor.call(
                 MethodNames.case.assign.to.self,
                 {caseId});

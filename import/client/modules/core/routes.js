@@ -8,27 +8,10 @@ import CaseList from '../customer/containers/case_list.js';
 import SupportCaseList from '../support_person/containers/case_list.js';
 import CaseDetail from '../support_person/containers/case_detail.js';
 
-//import PostList from './containers/postlist';
-//nimport Post from './containers/post';
-//import NewPost from './containers/newpost';
-
-/*
- const {Meteor, Collections, States} = context();
- const nav = [{url:'/',name:'Home'}];
- const user = Meteor.user();
- if(!user){
- onData(null, {content: ()=> (<LoginForm />), nav});
- }
- else if(user.roles){
- onData(null, {content: ()=> (<SupportCaseList />), nav});
- }
- else {
- onData(null, {content: ()=> (<CaseList />),nav});
- }
-*/
 export default function (injectDeps, {FlowRouter, Meteor, Tracker, LocalState}) {
     const MainLayoutCtx = injectDeps(MainLayout);
     const nav = [{url:'/',name:'Home'}];
+
     Tracker.autorun(()=>{
         if(LocalState.get('LOGIN_STATE')===undefined){
             //ignore first run
@@ -46,8 +29,6 @@ export default function (injectDeps, {FlowRouter, Meteor, Tracker, LocalState}) 
         name: 'case.list',
         action() {
             const user = Meteor.user();
-            //console.log(user);
-            //let content = ()=> ('==========');
             let content = ()=> (<LoginForm />);
             if(!user){
             }
@@ -62,6 +43,7 @@ export default function (injectDeps, {FlowRouter, Meteor, Tracker, LocalState}) 
             });
         }
     });
+
     FlowRouter.route('/case/:caseId', {
         name: 'case.detail',
         action({caseId}) {
@@ -70,23 +52,4 @@ export default function (injectDeps, {FlowRouter, Meteor, Tracker, LocalState}) 
             });
         }
     });
-
-    /*
-    FlowRouter.route('/post/:postId', {
-        name: 'posts.single',
-        action({postId}) {
-            mount(MainLayoutCtx, {
-                content: () => (<Post postId={postId}/>)
-            });
-        }
-    });
-     *//*
-    FlowRouter.route('/new-post', {
-        name: 'newpost',
-        action () {
-            mount(MainLayoutCtx, {
-                content: () => (<NewPost/>)
-            });
-        }
-    });*/
 }

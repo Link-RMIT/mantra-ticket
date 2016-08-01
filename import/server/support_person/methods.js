@@ -19,7 +19,6 @@ function is_available (caseId)  {
         throw new Meteor.Error(MethodNames.case.assign.to.team,"the case is currently own by " + the_case.supportTeamName);
     }
     if(the_case.supportPersonId && (the_case.supportPersonId != user._id)){
-        console.log(the_case.supportPersonId, user._id);
         throw new Meteor.Error(MethodNames.case.assign.to.team,"the case is already assigned to another support person");
     }
     return true;
@@ -81,9 +80,6 @@ export const release = new ValidatedMethod({
                 supportPersonId:null,
             }
         },(e)=>{
-            console.log('====================');
-            console.log(e);
-            console.log(Cases.findOne({_id:caseId}));
         });
     }
 });

@@ -9,7 +9,7 @@ export const composer = ({context}, onData) => {
         const options = {
             sort: {createdAt: -1}
         };
-        console.log(Collections);
+
         const case_list = Collections.Cases.find({},options).fetch();
         onData(null, {case_list});
     } else {
@@ -18,7 +18,6 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => {
-    console.log(actions);
     return ({
         new_case: actions.customer.new_case,
         context: () => context

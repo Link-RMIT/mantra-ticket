@@ -5,8 +5,6 @@ const toObj = (key_array)=>{
     },{});
 };
 
-
-
 const parse = (stack,def)=>{
     if (typeof(def)!=='object'){
         return stack.join('.');

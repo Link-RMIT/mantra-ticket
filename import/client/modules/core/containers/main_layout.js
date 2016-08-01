@@ -8,7 +8,6 @@ export const composer = ({context,content,nav}, onData) => {
 };
 
 export const depsMapper = (context, actions) => {
-    console.log(actions);
     return ({
         logout: actions.main.logout,
         context: () => context

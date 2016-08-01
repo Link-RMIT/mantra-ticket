@@ -23,7 +23,6 @@ class CaseList extends React.Component {
         }
         const {new_case} = this.props;
         const {contentRef} = this.refs;
-        console.log(this.refs);
         new_case(contentRef.value);
     }
 }

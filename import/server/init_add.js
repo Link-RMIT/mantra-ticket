@@ -6,10 +6,6 @@ function new_suppor_persons(){
     const field = 'roles.'+Configs.DEFAULT_SUPPORT_TEAM;
     let selector = {};
     selector[field] = {$exists:true};
-    console.log('init add');
-
-    console.log('level1');
-
     try{
         Accounts.createUser({
             username: 'l1',

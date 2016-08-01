@@ -9,7 +9,6 @@ export const composer = ({context}, onData) => {
         const options = {
             sort: {createdAt: -1}
         };
-        console.log(Collections);
         const case_list = Collections.Cases.find({},options).fetch();
         const queue = case_list.filter(
             (c)=> c.state == Collections.Cases.State.PENDING
@@ -25,7 +24,6 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => {
-    console.log(actions);
     return ({
         assign_to_self: actions.support_person.assign_to_self,
         release: actions.support_person.release,

@@ -4,7 +4,6 @@ class CaseDetail extends React.Component {
     render() {
         const { the_case, teams, notes} = this.props;
         const that = this;
-        console.log(the_case);
         return (
             <div>
                 <p>
@@ -43,7 +42,6 @@ class CaseDetail extends React.Component {
         );
     }
     AssignToTeam(teamName) {
-        //this.props.
         this.props.assign_to_team(
             this.props.the_case._id,
             teamName
