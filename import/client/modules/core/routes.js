@@ -48,7 +48,8 @@ export default function (injectDeps, {FlowRouter, Meteor, Tracker, LocalState}) 
         name: 'case.detail',
         action({caseId}) {
             mount(MainLayoutCtx, {
-                content: () => (<CaseDetail caseId={caseId}/>)
+                content: () => (<CaseDetail caseId={caseId}/>),
+                nav,
             });
         }
     });
